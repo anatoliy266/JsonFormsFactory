@@ -59,6 +59,66 @@ namespace JsonFormsFactory
             comand = new SqlCommand(query2, SQLConnection);
             rowsAffected = comand.ExecuteNonQuery();
             //MessageBox.Show(rowsAffected.ToString(), "INFO");
+<<<<<<< HEAD
+            SQLConnection.Close();
+        }
+
+        public void Open()
+        {
+            SQLConnection.Open();
+        }
+
+        public void Close()
+        {
+            SQLConnection.Close();
+        }
+
+        public bool CreateTable(string name, string[] fields)
+        {
+            string query = "if not exists (select name from sys.tables where name = @tableName) CREATE TABLE @tableName(@fields)";
+            string _fields = "";
+            foreach (var field in fields)
+            {
+                _fields += field;
+            }
+            SqlCommand command = new SqlCommand(query, SQLConnection);
+            command.Parameters.AddWithValue("@tableName", name);
+            command.Parameters.AddWithValue("@fields", _fields);
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected == -1)
+            {
+                return true;
+            } else return false;
+
+        }
+
+        public bool Insert(string table, string[] values)
+        {
+            string query = "insert into @tableName(@fields) values (@values)";
+            string fields = "";
+            switch (table)
+            {
+                case "formData":
+                    fields = "PropertyName, PropertyValue";
+                    break;
+                case "JsonStorage":
+                    fields = "Json";
+                    break;
+            }
+            string vals = string.Join(",", values);
+
+            SqlCommand command = new SqlCommand(query, SQLConnection);
+            command.Parameters.AddWithValue("@tableName", table);
+            command.Parameters.AddWithValue("@fields", fields);
+            command.Parameters.AddWithValue("@values", vals);
+
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected == -1)
+            {
+                return true;
+            }
+            else return false;
+=======
         }
 
         public bool CreateTable(string name, string[] fields)
@@ -84,6 +144,7 @@ namespace JsonFormsFactory
         {
             string query = "insert into @tableName(@fields) values (@values)";
             return false;
+>>>>>>> refs/remotes/origin/master
         }
 
         public bool Update()

@@ -15,6 +15,27 @@ namespace JsonFormsFactory
     {
         //string json = "{[Label: {name: label1, text: HelloWorld from formsFactory, anchor: [top, left], }, RichTextBox: {width: 100, height: 50, anchors: [top, label1]}]}";
         string json = "{1: [{Label:  {Name: \"label1\", Text: \"HelloWorld from formsFactory\"}}, {RichTextBox : {Width: 150, Height: 50, Name: \"RichTextBox1\" }}], " +
+<<<<<<< HEAD
+            "2: {ComboBox: {Name: \"ComboBox1\", Width: 100, Height: 40, Items: [\"Engineer\", \"Worker\", \"Student\", \"None\"]}}, " +
+            "3: {GroupBox: {Name: \"GroupBox1\", Width: 100, Height: 40, Text: \"Gender\", Controls: " +
+                "[{RadioButton: {Name: \"RadioButton1\", Text: \"Man\"}}, " +
+                "{RadioButton: {Name: \"RadioButton2\", Text: \"Woman\"}}]}}}";
+        int x = 0;
+        int y = 0;
+        Form gForm;
+        SQLConnector db;
+
+        public FormsFactory()
+        {
+            Debug.WriteLine("here: create FormsFactory");
+            
+            //GroupBox gb = new GroupBox();
+            //gb.Name;
+            //gb.Text;
+            //RadioButton rb = new RadioButton();
+            //rb.Text = "";
+            //rb.CanSelect;
+=======
             "2: {ComboBox: {Name: \"ComboBox1\", Width: 100, Height: 40, Items: [\"Engineer\", \"Worker\", \"Student\", \"None\"]}}}";
         ComboBox box = new ComboBox();
         
@@ -24,6 +45,7 @@ namespace JsonFormsFactory
             SQLConnector db = new SQLConnector("localhost\\SQLEXPRESS", "sa", "123456");
             ComboBox box = new ComboBox();
             box.Items.Add("");
+>>>>>>> refs/remotes/origin/master
         }
 
         public Form Generate()
@@ -52,6 +74,23 @@ namespace JsonFormsFactory
 
         private Form GenerateForm(object jObj)
         {
+<<<<<<< HEAD
+            gForm = new Form();
+            gForm.Width = 200;
+            gForm.Height = 400;
+
+            Button save = new Button();
+            save.Width = 50;
+            save.Height = 20;
+            save.Location = new System.Drawing.Point(0, 0);
+            save.Left = 0;
+            save.Top = gForm.Height - save.Height;
+            //save.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
+            save.Text = "Save";
+            save.MouseClick += new MouseEventHandler(OnSaveClick);
+            save.Parent = gForm;
+            //gForm.Controls.Add(save);
+=======
             Form gForm = new Form();
             gForm.Width = 200;
             gForm.Height = 400;
@@ -84,7 +123,23 @@ namespace JsonFormsFactory
 
             int x = 0;
             int y = 0;
+>>>>>>> refs/remotes/origin/master
 
+            Button delete = new Button();
+            delete.Width = 50;
+            delete.Height = 20;
+            delete.Location = new System.Drawing.Point(0, 0);
+            //delete.Anchor = (AnchorStyles.Bottom | AnchorStyles.Left);
+            delete.Left = gForm.Width - delete.Width;
+            delete.Top = gForm.Height - delete.Height;
+            delete.AutoSize = true;
+            delete.Text = "Delete";
+
+            delete.Parent = gForm;
+            //gForm.Controls.Add(delete);
+            object control = null;
+
+            
             var root = (JObject)jObj.GetType().InvokeMember("Root", BindingFlags.GetProperty, null, jObj, null);
 
 
@@ -96,23 +151,39 @@ namespace JsonFormsFactory
                     foreach (var element in array.Children<JObject>())
                     {
                         var item = CreateControl(element);
+<<<<<<< HEAD
+                        var placedItem = SetControlPosition(item, y, x);
+                        control = placedItem;
+                        var dY = Convert.ChangeType(control.GetType().GetProperty("Height").GetValue(control), typeof(Int32));
+                        x += (int)dY;
+=======
                         var placedItem = SetControlPosition(item, x, y);
                         control = placedItem;
                         var dY = Convert.ChangeType(control.GetType().GetProperty("Height").GetValue(control), typeof(Int32));
                         y += (int)dY;
+>>>>>>> refs/remotes/origin/master
                     }
                     y = 0;
                 }
                 else if (val.Value.Type == JTokenType.Object)
                 {
                     var item = CreateControl((JObject)val.Value);
+<<<<<<< HEAD
+                    var placedItem = SetControlPosition(item, y, x);
+=======
                     var placedItem = SetControlPosition(item, x, y);
+>>>>>>> refs/remotes/origin/master
                     control = placedItem;
                 }
                 else throw new Exception("invalid json");
                 var dX = Convert.ChangeType(control.GetType().GetProperty("Height").GetValue(control), typeof(Int32));
+<<<<<<< HEAD
+                y += (int)dX;
+                x = 0;
+=======
                 x += (int)dX;
 
+>>>>>>> refs/remotes/origin/master
                 dynamic formControl = control;
                 gForm.Controls.Add(formControl);
 
@@ -163,15 +234,37 @@ namespace JsonFormsFactory
                         //List<string> items = new List<string>();
                         foreach (var arrayElement in property.Value)
                         {
+<<<<<<< HEAD
+                            object arrayItem = null;
+                            if (arrayElement.Type == JTokenType.Object)
+                            {
+                                arrayItem = CreateControl((JObject)arrayElement);
+                            } else
+                            {
+                                arrayItem = arrayElement;
+                            }
+                            MessageBox.Show(arrayElement.ToString(), "INFO");
+                            var itemsMethod = propertyItem.GetMethod.Invoke(item, null);
+                            itemsMethod.GetType().InvokeMember("Add", BindingFlags.InvokeMethod, null, itemsMethod, new object[] { arrayItem });
+=======
                             MessageBox.Show(arrayElement.ToString(), "INFO");
                             var itemsMethod = propertyItem.GetMethod.Invoke(item, null);
                             itemsMethod.GetType().InvokeMember("Add", BindingFlags.InvokeMethod, null, itemsMethod, new object[] { arrayElement });
+>>>>>>> refs/remotes/origin/master
                             //items.Add(arrayElement.ToString());
                         }
                         //propertyItem.GetType().InvokeMember("Add", BindingFlags.InvokeMethod, null, propertyItem, new object[] { items });
                         
                     } else if(property.Value.Type == JTokenType.Object)
                     {
+<<<<<<< HEAD
+                        var propertyItem = item.GetType().GetProperty(property.Name);
+                        var propertyObject = CreateControl((JObject)property.Value);
+                        var itemsMethod = propertyItem.GetMethod.Invoke(item, null);
+                        itemsMethod.GetType().InvokeMember("Add", BindingFlags.InvokeMethod, null, itemsMethod, new object[] { propertyObject });
+
+=======
+>>>>>>> refs/remotes/origin/master
                         throw new Exception("invalid json");
                     } else
                     {
@@ -191,6 +284,21 @@ namespace JsonFormsFactory
             item.GetType().GetProperty("Left").SetValue(item, x);
             item.GetType().GetProperty("Top").SetValue(item, y);
             return item;
+<<<<<<< HEAD
+        }
+
+        private void OnSaveClick(object sender, MouseEventArgs e)
+        {
+            db = new SQLConnector("localhost\\SQLEXPRESS", "sa", "123456");
+            db.Open();
+            var controls = gForm.Controls;
+            foreach (Control control in controls)
+            {
+                db.Insert("formData", new string[] { control.Name, control.Text });
+            }
+            db.Close();
+=======
+>>>>>>> refs/remotes/origin/master
         }
     }
         
