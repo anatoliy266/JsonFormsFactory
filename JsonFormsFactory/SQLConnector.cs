@@ -20,5 +20,25 @@ namespace JsonFormsFactory
             var SQLConnection = new SqlConnection(builder.ConnectionString);
             SQLConnection.Open();
         }
+
+        public bool CreateTable(string name, string[] options)
+        {
+            return false;
+        }
+
+        public bool Insert()
+        {
+            return false;
+        }
+
+        public bool Update()
+        {
+            return false;
+        }
+
+        public bool Remove()
+        {
+            return false;
+        }
     }
 }
