@@ -172,7 +172,7 @@ namespace JsonFormsFactory
                         
                     } else if(property.Value.Type == JTokenType.Object)
                     {
-                        var boxitems = box.Items;
+                        throw new Exception("invalid json");
                     } else
                     {
                         var propertyItem = item.GetType().GetProperty(property.Name);
