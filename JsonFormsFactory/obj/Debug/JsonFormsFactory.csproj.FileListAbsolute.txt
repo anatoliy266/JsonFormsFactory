@@ -1,0 +1,13 @@
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\bin\Debug\JsonFormsFactory.exe.config
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\bin\Debug\JsonFormsFactory.exe
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\bin\Debug\JsonFormsFactory.pdb
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\bin\Debug\Newtonsoft.Json.dll
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\bin\Debug\Newtonsoft.Json.xml
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.Form1.resources
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.Properties.Resources.resources
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.csproj.GenerateResource.cache
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.csproj.CopyComplete
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.exe
+C:\Users\admin\source\repos\JsonFormsFactory\JsonFormsFactory\obj\Debug\JsonFormsFactory.pdb
